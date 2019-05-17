@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express();
+// 載入 db 資料
 const db = require('../models');
 const User = db.User;
 
@@ -10,11 +11,38 @@ router.get('/register', (req, res) => {
 
 // 註冊檢查
 router.post('/register', (req, res) => {
-  User.create({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-  }).then(user => res.redirect('/'));
+  const {
+    name,
+    email,
+    password
+  } = req.body;
+  User.findOne({
+    where: {
+      email
+    }
+  }).then(user => {
+    if (user) {
+      console.log('User already exists');
+      res.render('register', {
+        name,
+        email,
+        passsword1,
+        passsword2,
+      })
+    } else {
+      const newUser = new User({
+        name,
+        email,
+        passsword,
+      })
+      newUser
+        .save()
+        .then(user => {
+          res.redirect('/')
+        })
+        .catch(err => console.log(err));
+    }
+  })
 })
 
 // 登入頁面
