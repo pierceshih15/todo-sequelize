@@ -12,7 +12,9 @@ const db = require('./models');
 const Todo = db.Todo;
 const User = db.User;
 
+const HomeRouter = require('./routers/home');
 const UserRouter = require('./routers/user');
+const TodoRouter = require('./routers/todo');
 
 app.engine('handlebars', exphbs({
   defaultLayout: 'main',
@@ -25,7 +27,7 @@ app.use(bodyParser.urlencoded({
 app.use(methodOverride('_method'));
 
 app.use(session({
-  secret: 'your secret key',
+  secret: 'soajdpjp',
   resave: 'false',
   saveUninitialized: 'false'
 }));
@@ -43,7 +45,9 @@ app.get('/', (req, res) => {
   res.send('HomePage');
 })
 
+app.use('/', HomeRouter);
 app.use('/users', UserRouter);
+app.use('/todos', TodoRouter);
 
 app.listen(port, () => {
   db.sequelize.sync()

@@ -1,0 +1,22 @@
+<!-- ./views/index.handlebars -->
+<ul class="list-group">
+  {{#each todos}}
+  <li class="list-group-item">
+    <div class="row">
+      <div class=".col-auto mr-auto">
+        <input class="align-middle" type="checkbox" name="done" {{#if this.done}}checked{{/if}}>
+        <h4 class="d-inline align-middle">{{{this.name}}}</h4>
+      </div>
+
+      <div class=".col-auto">
+        <a class="btn btn-secondary" href="/todos/{{{this.id}}}">Detail</a>
+        <a class="btn btn-success" href="/todos/{{{this.id}}}/edit">Edit</a>
+        <form class="d-inline" action="/todos/{{{this.id}}}/delete?_method=DELETE" method="POST">
+          <button class="btn btn-danger" type="submit">Delete</button>
+        </form>
+      </div>
+
+    </div>
+  </li>
+  {{/each}}
+</ul>
