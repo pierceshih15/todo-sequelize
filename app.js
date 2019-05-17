@@ -24,6 +24,21 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(methodOverride('_method'));
 
+app.use(session({
+  secret: 'your secret key',
+  resave: 'false',
+  saveUninitialized: 'false'
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+require('./config/passport')(passport);
+app.use((req, res, next) => {
+  res.locals.user = req.user,
+    next()
+})
+
+
 app.get('/', (req, res) => {
   res.send('HomePage');
 })
