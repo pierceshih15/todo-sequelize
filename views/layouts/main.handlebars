@@ -12,20 +12,42 @@
 </head>
 
 <body>
-  <div class="container mt-5">
-    {{{body}}}
-  </div>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-</body>
+  <body class="bg-light">
+    <div class="container">
+      <header>
+        <nav class="navbar navbar-dark bg-dark justify-content-between">
+          <a class="navbar-brand" href="/">Todo List</a>
+          {{#if isAuthenticated}}
+          <div>
+            <a href="/" class="btn btn-success mx-1">首頁</a>
+            <a href="/todos/new" class="btn btn-primary mx-1">Create</a>
+            <a href="/users/logout" class="btn btn-danger mx-1">Logout</a>
+          </div>
+          {{else}}
+          <a href="/users/login" class="btn btn-outline-light">Login</a>
+          {{/if}}
+        </nav>
+      </header>
+
+      <main>
+        <div class="container mt-3">
+          <h3 class="text-center mb-4">待辦事項列表</h3>
+          {{{body}}}
+        </div>
+      </main>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
+  </body>
 
 
 

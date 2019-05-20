@@ -1,12 +1,11 @@
 <!-- ./views/index.handlebars -->
 <ul class="list-group">
-  <h1>1234</h1>
   {{#each todos}}
-  <li class="list-group-item">
+  <li class="list-group-item mb-2 px-4">
     <div class="row">
       <div class=".col-auto mr-auto">
         <input class="align-middle" type="checkbox" name="done" {{#if this.done}}checked{{/if}}>
-        <h4 class="d-inline align-middle">{{{this.name}}}</h4>
+        <h4 class="d-inline align-middle ml-2">{{{this.name}}}</h4>
       </div>
 
       <div class=".col-auto">

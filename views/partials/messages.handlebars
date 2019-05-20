@@ -1,0 +1,33 @@
+<!-- ./views/partials/messages.handlebars -->
+
+<!-- 錯誤訊息，使用 each 實踐多種情境 -->
+{{#if errors}}
+{{#each errors}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  {{this.message}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/each}}
+{{/if}}
+
+<!-- 成功訊息 -->
+{{#if success_msg}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  {{success_msg}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/if}}
+
+<!-- 警示訊息 -->
+{{#if warning_msg}}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{warning_msg}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/if}}
