@@ -12,7 +12,25 @@ const {
 
 // 首頁
 router.get('/', authenticated, (req, res) => {
-  res.send('顯示全部 Todo');
+  const user = User.findByPk(req.user.id)
+    .then((user) => {
+      if (!user) {
+        return res.error();
+      }
+      Todo.findAll({
+          where: {
+            UserId: req.user.id,
+          }
+        })
+        .then(function (todos) {
+          return res.render('index', {
+            todos
+          })
+        })
+    })
+    .catch((error) => {
+      return res.status(422).json(error);
+    })
 })
 
 module.exports = router;

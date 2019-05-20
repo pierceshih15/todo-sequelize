@@ -27,14 +27,14 @@ router.post('/register', (req, res) => {
       res.render('register', {
         name,
         email,
-        passsword1,
-        passsword2,
+        password1,
+        password2,
       })
     } else {
       const newUser = new User({
         name,
         email,
-        passsword,
+        password,
       })
       newUser
         .save()
